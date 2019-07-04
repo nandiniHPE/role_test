@@ -1,0 +1,17 @@
+- hosts: acs
+  vars:
+    listvar1:
+    - 'a'
+    - 'b'
+    - 'c'
+  tasks:
+    - shell: echo "nested test a={{ item[0] }} b={{ item[1] }}"
+      with_nested:
+        - listvar1
+        - [ 1, 2, 3 ]
+    - name: Install common software requirements
+      yum: pkg={{ item }} state=installed
+      with_items:
+        - git
+        - htop
+        - vim

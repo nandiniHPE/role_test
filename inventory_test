@@ -1,0 +1,11 @@
+[acs]
+127.0.0.1 ansible_connection=local 
+[ars]
+10.76.80.204 ansible_ssh_private_key_file=/root/.ssh/id_rsa ansible_user=root ansible_become=yes myname=nandini-host-var
+[ars:vars]
+myname=nandini
+mycompany=hpe
+[common:children]
+acs
+ars
+

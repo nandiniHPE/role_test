@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  tasks:
+  - include: test1.yml
+  - include: test2.yml
+  - include: test3.yml
+  - include: test4.yml

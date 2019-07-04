@@ -1,0 +1,10 @@
+---
+- name: This sets up git
+  hosts: localhost
+  tasks:
+  - name: intall git 
+    yum: name=git state=present
+  - name: install wget
+    yum: name=wget state=present
+  - name: clone git repo
+    git: repo=https://github.com/scmgalaxy/ansible-role-template dest=/src/ansible-examples separate_git_dir=/src/ansible-examples.gitstate=present

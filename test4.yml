@@ -1,0 +1,15 @@
+---
+- name: create file and copy 
+  hosts: localhost
+  tasks:
+  - name: create file 
+    file: dest=/opt/test.txt mode=600 state=touch
+    when: ansible_os_family == "RedHat"
+  - name: copy file 
+    copy: src=/opt/test.txt dest=/var/www/html/test.txt
+    when: ansible_os_family == "RedHat"
+  - name: copy contents 
+    copy: dest=/opt/index.html content='<html><h1> this is linux redhat </h1></html>'
+    when: ansible_os_family == "RedHat"
+  - name: copy file 
+    copy: src=/opt/index.html dest=/var/www/html/index.html

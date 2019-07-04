@@ -1,0 +1,11 @@
+- hosts: acs
+  tasks:
+  - name: Ansible register with_items example
+    shell: "find test*.yml"
+    args:
+      chdir: /root/
+    register: with_output
+
+  - shell: "cp {{ item }} {{item}}_bkp"
+    with_items:
+      - "{{ with_output.stdout_lines }}"

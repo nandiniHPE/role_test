@@ -1,0 +1,8 @@
+---
+- name: create group and user 
+  hosts: localhost
+  tasks:
+  - name: create group 
+    group: name=deploy1 state=present
+  - name: create user 
+    user: name=deploy-user1 group=deploy1 state=present

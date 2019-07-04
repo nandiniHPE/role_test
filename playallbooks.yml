@@ -1,0 +1,10 @@
+- hosts: ars
+  tasks:
+    - debug:
+        msg: play1 {{ myname }} {{ mycompany }}
+
+- name: Include a play after another play
+  import_playbook: test1.yml
+  import_playbook: test2.yml
+  import_playbook: test3.yml
+  import_playbook: test4.yml

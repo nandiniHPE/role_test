@@ -1,0 +1,8 @@
+---
+- name: This sets up an httpd webserver
+  hosts: win
+  tasks:
+  - name: create dir nandini
+    win_file: path=C:\hp\\nandini state=directory
+  - name: create file 
+    win_file: path=C:\hp\\nandini\index.html state=touch

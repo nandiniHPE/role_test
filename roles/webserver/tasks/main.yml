@@ -1,0 +1,33 @@
+---
+# tasks file for webserver
+  - name: Install the httpd apps
+    yum: name=httpd
+  - name: start the httpd service
+    service: name=httpd state=started
+  - name: ensure apache is at the latest version
+    yum:
+      name: httpd
+      state: latest
+  - name: write the apache config file
+    template:
+      src: serv.j2
+      dest: /etc/httpd/conf/httpd.conf
+    notify:
+    - restart apache
+  - name: ensure apache is running
+    service:
+      name: httpd
+      state: started
+  - name: Ansible register with_items example
+    shell: "find test*.yml"
+    args:
+      chdir: /root/
+    register: with_output
+  - name: copy contents
+    template:
+      src: index.j2
+      dest: /opt/index.html
+    when: ansible_os_family == "RedHat"
+  - name: copy file
+    copy: src=/opt/index.html dest=/var/www/html/index.html
+  - include: variablesplay.yml

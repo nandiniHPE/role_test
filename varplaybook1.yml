@@ -1,0 +1,24 @@
+---
+- hosts: common
+  vars:
+#     myname: "nandini-playbook"
+#     mycompany: "hpe-playbook"
+#  vars_prompt:
+#     - name: "myname"
+#       private: no
+#       prompt: "what is your name?"
+#     - name: "mycompany"
+#       private: no
+#       prompt: "what is your company name?"
+#  vars_files:
+#     - "/root/external_vars.yml"
+  tasks:
+#    - name: "task variables"
+#      include_vars: /root/task_vars.yml
+    - debug:
+        msg: System {{ myname }} has uuid {{ ansible_product_uuid }}
+    - debug:
+        msg: "{{ ansible_product_uuid }}"
+    - debug: var=ansible_product_uuid
+    - debug:
+        msg: play1 {{ myname }} 

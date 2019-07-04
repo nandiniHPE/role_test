@@ -1,0 +1,6 @@
+---
+# tasks file for users
+  - name: create group
+    group: name=deloitte state=present
+  - name: create user
+    user: name=deploy group=deloitte state=present

@@ -1,0 +1,6 @@
+---
+- hosts: acs
+  roles:
+    - role: webserver
+    - role: users
+    - role: loop
